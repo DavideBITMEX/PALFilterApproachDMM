@@ -1,3 +1,9 @@
+###########################################################-
+# Objective: Create a table that summarizes the results
+# Author: Davide Bittelli
+# Date Modified: 01.04.2025
+###########################################################-
+
 original_n_GE <- sum(sapply(GE_FH22_train.details$Time_adj, function(t) {
   any(t >= PAL_times22$Start & t <= PAL_times22$End)
 }))
@@ -20,9 +26,9 @@ original_n_S90 <- sum(sapply(S90_FH22_train.details$Time_adj, function(t) {
   any(t >= PAL_times22$Start & t <= PAL_times22$End)
 }))
 
+# We hypothesize that a trained person is able to inspect 20 signals in 1 minute
 pre_n <- c(original_n_GE, original_n_N30, original_n_N60, original_n_N90, original_n_S30, original_n_S60, original_n_S90)
 ext_time <- (pre_n/20)/60 # in hours
-
 
 post_n <- c(nrow(ToCheck_GE_FH22), nrow(ToCheck_N30_FH22), nrow(ToCheck_N60_FH22), nrow(ToCheck_N90_FH22), nrow(ToCheck_S30_FH22), nrow(ToCheck_S60_FH22), nrow(ToCheck_S90_FH22))
 ext_time_post <- (post_n/20)/60 # in hours

@@ -1,16 +1,12 @@
 ###########################################################-
-# Objective: Export data to (manually) filter (FH22)
-# Author(s): Davide Bittelli
-# Date Modified: 04.03.2025
+# Objective: Export datasets for visual checks
+# Author: Davide Bittelli
+# Date Modified: 01.04.2025
 ###########################################################-
 
 library(dplyr)
 library(lubridate)
 
-#-----------------------------------------------------------------------------------------------------------------------------#
-#----------------- elements to search and replace, when copyng-pasting for another campaign: FH22,  PAL_times22 --------------#
-#---------------------------- We Export the filtered data to delete missed PAL signals ---------------------------------------#
-#-----------------------------------------------------------------------------------------------------------------------------#
 
 # In script '3_filter_PALsignals.R' we created the following datasets:
 
@@ -26,7 +22,7 @@ library(lubridate)
 # In the times where PAL is ON we set HP == 0.
 
 # Then we export the observations JUST for the time when the PAL was ON and we check them manually by going through each .FP3 file in FPOD.EXE
-# In script 6_ we merge the results with the other observations.
+# In the next script we merge the results with the other observations.
 
 
 ## N30
@@ -102,8 +98,6 @@ ToCheck_GE_FH22 <- GE_FH22_filt_train.details %>% filter(HP == 0)
 
 
 
-
-
 # Export them (this won't be touched)
 write.table(ToCheck_N30_FH22, "exports/ToCheck/ToCheck_N30_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
 write.table(ToCheck_N60_FH22, "exports/ToCheck/ToCheck_N60_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
@@ -113,13 +107,14 @@ write.table(ToCheck_S60_FH22, "exports/ToCheck/ToCheck_S60_FH22.csv", sep = ";",
 write.table(ToCheck_S90_FH22, "exports/ToCheck/ToCheck_S90_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
 write.table(ToCheck_GE_FH22, "exports/ToCheck/ToCheck_GE_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
 # Export a copy (this will be the one to visually check)
-write.table(ToCheck_N30_FH22, "exports/Checked/Checked_N30_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
-write.table(ToCheck_N60_FH22, "exports/Checked/Checked_N60_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
-write.table(ToCheck_N90_FH22, "exports/Checked/Checked_N90_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
-write.table(ToCheck_S30_FH22, "exports/Checked/Checked_S30_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
-write.table(ToCheck_S60_FH22, "exports/Checked/Checked_S60_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
-write.table(ToCheck_S90_FH22, "exports/Checked/Checked_S90_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
-write.table(ToCheck_GE_FH22, "exports/Checked/Checked_GE_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
+# It's commented because in the repository the checked files are already there and they have already been visually checked
+# write.table(ToCheck_N30_FH22, "exports/Checked/Checked_N30_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
+# write.table(ToCheck_N60_FH22, "exports/Checked/Checked_N60_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
+# write.table(ToCheck_N90_FH22, "exports/Checked/Checked_N90_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
+# write.table(ToCheck_S30_FH22, "exports/Checked/Checked_S30_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
+# write.table(ToCheck_S60_FH22, "exports/Checked/Checked_S60_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
+# write.table(ToCheck_S90_FH22, "exports/Checked/Checked_S90_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
+# write.table(ToCheck_GE_FH22, "exports/Checked/Checked_GE_FH22.csv", sep = ";", row.names = FALSE, col.names = TRUE)
 
 
 rstudioapi::navigateToFile("5_MergeData.R")

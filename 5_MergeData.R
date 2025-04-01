@@ -1,9 +1,8 @@
-
-#-----------------------------------------------------------------------------------------------------------------------------#
-#----------------- elements to search and replace, when copyng-pasting for another campaign: FH22,  PAL_times22 --------------#
-#---------------------------------------- Don't forget to load FH22.RData ----------------------------------------------------#
-#-----------------------------------------------------------------------------------------------------------------------------#
-
+###########################################################-
+# Objective: Import Datasets that were visually checked
+# Author: Davide Bittelli
+# Date Modified: 01.04.2025
+###########################################################-
 
 # We have manually checked the filtered data and labelled the signals (within the PAL times) that were PAL or Porpoises
 # Now we import these temporary files and merge them with the original train.details datasets
@@ -19,11 +18,7 @@ Checked_GE_FH22 <- read.csv("exports/Checked/Checked_GE_FH22.csv", header = TRUE
 
 # Within the PAL times we remove the observations (from the temporary datasets we just imported) that have 'HP' == 0
 # from train.details
-# and DPM (next R script)
-
 # Then, we substitute the obs in the PAL times (from train.details) with the ones we just got
-
-
 
 ## N30
 {
@@ -42,8 +37,7 @@ Checked_GE_FH22 <- read.csv("exports/Checked/Checked_GE_FH22.csv", header = TRUE
   trial2 <- trial2[, !colnames(trial2) %in% c("HP.x", "HP.y")]
   # remove PAL signals
   trial2 <- subset(trial2, HP != 0)
-  # to check if the filtering went well: sum(trial$HP) + sum(N60_FH22_filt_train.details$HP) should be = sum(trial2$HP)
-  
+
   N30_FH22_filt_train.details <- trial2
   remove(trial, trial2)
 }
@@ -65,8 +59,7 @@ Checked_GE_FH22 <- read.csv("exports/Checked/Checked_GE_FH22.csv", header = TRUE
   trial2 <- trial2[, !colnames(trial2) %in% c("HP.x", "HP.y")]
   # remove PAL signals
   trial2 <- subset(trial2, HP != 0)
-  # to check if the filtering went well: sum(trial$HP) + sum(N60_FH22_filt_train.details$HP) should be = sum(trial2$HP)
-  
+
   N60_FH22_filt_train.details <- trial2
   remove(trial, trial2)
 }
@@ -88,8 +81,7 @@ Checked_GE_FH22 <- read.csv("exports/Checked/Checked_GE_FH22.csv", header = TRUE
   trial2 <- trial2[, !colnames(trial2) %in% c("HP.x", "HP.y")]
   # remove PAL signals
   trial2 <- subset(trial2, HP != 0)
-  # to check if the filtering went well: sum(trial$HP) + sum(N90_FH22_filt_train.details$HP) should be = sum(trial2$HP)
-  
+
   N90_FH22_filt_train.details <- trial2
   remove(trial, trial2)
 }
@@ -111,7 +103,6 @@ Checked_GE_FH22 <- read.csv("exports/Checked/Checked_GE_FH22.csv", header = TRUE
   trial2 <- trial2[, !colnames(trial2) %in% c("HP.x", "HP.y")]
   # remove PAL signals
   trial2 <- subset(trial2, HP != 0)
-  # to check if the filtering went well: sum(trial$HP) + sum(S30_FH22_filt_train.details$HP) should be = sum(trial2$HP)
   sum(trial$HP)
   sum(S30_FH22_filt_train.details$HP)
   sum(trial2$HP)
@@ -137,7 +128,6 @@ Checked_GE_FH22 <- read.csv("exports/Checked/Checked_GE_FH22.csv", header = TRUE
   trial2 <- trial2[, !colnames(trial2) %in% c("HP.x", "HP.y")]
   # remove PAL signals
   trial2 <- subset(trial2, HP != 0)
-  # to check if the filtering went well: sum(trial$HP) + sum(S60_FH22_filt_train.details$HP) should be = sum(trial2$HP)
   sum(trial$HP)
   sum(S60_FH22_filt_train.details$HP)
   sum(trial2$HP)
@@ -163,7 +153,6 @@ Checked_GE_FH22 <- read.csv("exports/Checked/Checked_GE_FH22.csv", header = TRUE
   trial2 <- trial2[, !colnames(trial2) %in% c("HP.x", "HP.y")]
   # remove PAL signals
   trial2 <- subset(trial2, HP != 0)
-  # to check if the filtering went well: sum(trial$HP) + sum(S90_FH22_filt_train.details$HP) should be = sum(trial2$HP)
   sum(trial$HP)
   sum(S90_FH22_filt_train.details$HP)
   sum(trial2$HP)
@@ -189,7 +178,6 @@ Checked_GE_FH22 <- read.csv("exports/Checked/Checked_GE_FH22.csv", header = TRUE
   trial2 <- trial2[, !colnames(trial2) %in% c("HP.x", "HP.y")]
   # remove PAL signals
   trial2 <- subset(trial2, HP != 0)
-  # to check if the filtering went well: sum(trial$HP) + sum(GE_FH22_filt_train.details$HP) should be = sum(trial2$HP)
   sum(trial$HP)
   sum(GE_FH22_filt_train.details$HP)
   sum(trial2$HP)

@@ -1,7 +1,7 @@
 ###########################################################-
 # Objective: Import time-drifts and implement them on the click-trains datasets (using linear models).
 #            The time-drifts are calculated in relation to the reference pod (GW)
-# Author: Davide Bittelli
+# Author: Davide Bittelli & Tim Taugnitz
 # Date Modified: 01.04.2025
 ###########################################################-
 
@@ -18,28 +18,20 @@ Timedrifts_FH_22$Day <- yday(as.POSIXct(Timedrifts_FH_22$Datum, format = "%d.%m.
 # Linear Models
 N30_driftmodel_FH_22 <- lm(N30 ~ Day, data = Timedrifts_FH_22)
 N60_driftmodel_FH_22 <- lm(N60 ~ Day, data = Timedrifts_FH_22)
-N90_driftmodel_FH_22 <- lm(N90 ~ Day, data = Timedrifts_FH_22[1:3,])
+N90_driftmodel_FH_22 <- lm(N90 ~ Day, data = Timedrifts_FH_22[1:3,]) # N90 F-POD was changes during the campaign, resulting in 2 click-train files (these were put together afterwards). 3 samples for time-drift offsets were calculated for the first file and 1 for the second file, the linear model was therefore fitted just on the first file.
 
-S30_driftmodel_FH_22 <- lm(S30 ~ Day, data = Timedrifts_FH_22[1:3,])
+S30_driftmodel_FH_22 <- lm(S30 ~ Day, data = Timedrifts_FH_22[1:3,]) # S30 F-POD was changes during the campaign, resulting in 2 click-train files (these were put together afterwards). 3 samples for time-drift offsets were calculated for the first file and 1 for the second file, the linear model was therefore fitted just on the first file.
 S60_driftmodel_FH_22 <- lm(S60 ~ Day, data = Timedrifts_FH_22)
 S90_driftmodel_FH_22 <- lm(S90 ~ Day, data = Timedrifts_FH_22)
 
-GE_1_driftmodel_FH_22 <- lm(GE ~ Day, data = Timedrifts_FH_22[1:2,])
-GE_2_driftmodel_FH_22 <- lm(GE ~ Day, data = Timedrifts_FH_22[3:4,])
+# GE F-POD was changes during the campaign, resulting in 2 click-train files (these were put together afterwards)
+GE_1_driftmodel_FH_22 <- lm(GE ~ Day, data = Timedrifts_FH_22[1:2,]) # 2 samples for time-drift offsets were calculated for the first file (linear model fitted on 2 points)
+GE_2_driftmodel_FH_22 <- lm(GE ~ Day, data = Timedrifts_FH_22[3:4,]) # 2 samples for time-drift offsets were calculated for the second file (linear model fitted on 2 points)
 
-
+# Example
 plot(Timedrifts_FH_22$Day, Timedrifts_FH_22$N30)
 abline(N30_driftmodel_FH_22)
 
-
-
-# Prediction
-
-# w <- data.frame(Day = c(1,10,100,200),
-#                 Test = c(1,10,100,204))
-# w$predict.1 <- predict(N30_driftmodel_FH_22, newdata = w)
-# w$predict.2 <- predict(N30_driftmodel_FH_22, newdata = data.frame(Day = w$Test))
-# w
 
 N30_FH22_train.details$Day <- yday(N30_FH22_train.details$Time)
 N30_FH22_train.details$Timedrift <- predict(N30_driftmodel_FH_22, newdata = N30_FH22_train.details)

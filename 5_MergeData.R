@@ -186,6 +186,6 @@ Checked_GE_FH22 <- read.csv("exports/Checked/Checked_GE_FH22.csv", header = TRUE
   remove(trial, trial2)
 }
 
-rstudioapi::navigateToFile("6_CheckResults.R")
+rstudioapi::navigateToFile("6_DP10M.R")
 
 

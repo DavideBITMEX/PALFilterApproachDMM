@@ -14,14 +14,15 @@ This methodology has proven to be:
 
 ## Repository Structure
 📁 data/
-    └── .rds files containing processed data
+└── .rds files containing processed data
+
 📁 exports/
-    ├── ToCheck/     # Click-trains exported for manual review in FPOD.exe
-    └── Checked/     # Verified click-train detections
-📁 R_scripts/
-    └── 01_script.R
-        02_script.R
-        ...
+├── ToCheck/ # Click-trains exported for manual review in FPOD.exe
+└── Checked/ # Verified click-train detections
+
+📁 scripts/
+└── 01_script.R
+02_script.R
 
 
 ## Getting Started

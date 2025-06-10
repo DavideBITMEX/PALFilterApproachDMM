@@ -13,16 +13,12 @@ This methodology has proven to be:
 - 📈 Reliable, enabling accurate long-term monitoring of harbor porpoise acoustic activity even in environments with artificial NBHF sources
 
 ## Repository Structure
-📁 data/
-└── .rds files containing processed data
+📁 data/ .rds files containing processed data
 
-📁 exports/
-├── ToCheck/ # Click-trains exported for manual review in FPOD.exe
-└── Checked/ # Verified click-train detections
+📁 exports/ 'ToCheck'/ Click-trains exported for manual review in FPOD.exe.
+'Checked'/ Verified click-train detections
 
-📁 scripts/
-└── 01_script.R
-02_script.R
+📁 scripts/ R-scripts
 
 
 ## Getting Started

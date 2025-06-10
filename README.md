@@ -34,6 +34,8 @@ Clone the repository
 
 Open the .Rproj file in RStudio
 
+You can open the file 'REnvironment.RData' to directly load the R Environment.
+
 Follow the numbered scripts in sequence to:
 
 Load and preprocess data

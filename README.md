@@ -22,7 +22,6 @@ This methodology has proven to be:
 
 
 ## Getting Started
-Developed using RStudio 2023.06.1
 
 R version: 4.3.1
 
